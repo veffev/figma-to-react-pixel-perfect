@@ -214,7 +214,7 @@ The rules are written into the page spec and verified at several viewports:
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/flow-map-dark.svg">
-    <img src="docs/assets/flow-map-light.svg" alt="Twenty Figma frames mapped to one shared layout and three routes, each with steps and states" width="900">
+    <img src="docs/assets/flow-map-light.svg" alt="Twenty Figma frames mapped to one shared layout and three flows, each a route with steps and states" width="900">
   </picture>
 </p>
 
@@ -222,7 +222,7 @@ A frame is not a page. Given a section with many screens, the decomposer reads t
 
 | Relation between frames | Becomes |
 |---|---|
-| Different flows (log in, sign up, reset) | separate routes |
+| Different flows (each with its own purpose and entry point) | separate routes |
 | Steps of one flow | steps inside one route, using the mechanism the project already uses |
 | The same step in different conditions (empty, error, loading) | states of the same component |
 | The same content at different widths | one layout on the repo's breakpoints |

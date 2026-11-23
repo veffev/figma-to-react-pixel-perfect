@@ -31,49 +31,49 @@
 <text x="442" y="83" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">Shared layout</text>
 <text x="842" y="83" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end" dominant-baseline="central">built and verified once</text>
 <rect x="424" y="122" width="436" height="70" rx="10" fill="#1c1a4a" stroke="#818cf8" stroke-width="1.2"/>
-<text x="442" y="142" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/login</text>
+<text x="442" y="142" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/flow-a</text>
 <text x="842" y="142" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end" dominant-baseline="central">one route</text>
-<rect x="442" y="158" width="73.0" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="454" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">entry</text>
-<circle cx="503.0" cy="170" r="3.5" fill="#fb923c"/>
-<rect x="525.0" y="158" width="95.0" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="537.0" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">email</text>
-<circle cx="608.0" cy="170" r="3.5" fill="#fb923c"/>
-<circle cx="597.0" cy="170" r="3.5" fill="#fb923c"/>
-<circle cx="586.0" cy="170" r="3.5" fill="#fb923c"/>
-<rect x="630.0" y="158" width="116.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="642.0" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">check inbox</text>
-<circle cx="734.2" cy="170" r="3.5" fill="#fb923c"/>
+<rect x="442" y="158" width="80.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="454" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 1</text>
+<circle cx="510.20000000000005" cy="170" r="3.5" fill="#fb923c"/>
+<rect x="532.2" y="158" width="102.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="544.2" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 2</text>
+<circle cx="622.4000000000001" cy="170" r="3.5" fill="#fb923c"/>
+<circle cx="611.4000000000001" cy="170" r="3.5" fill="#fb923c"/>
+<circle cx="600.4000000000001" cy="170" r="3.5" fill="#fb923c"/>
+<rect x="644.4000000000001" y="158" width="80.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="656.4000000000001" y="170" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 3</text>
+<circle cx="712.6000000000001" cy="170" r="3.5" fill="#fb923c"/>
 <rect x="424" y="202" width="436" height="70" rx="10" fill="#1c1a4a" stroke="#818cf8" stroke-width="1.2"/>
-<text x="442" y="222" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/signup</text>
+<text x="442" y="222" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/flow-b</text>
 <text x="842" y="222" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end" dominant-baseline="central">one route</text>
-<rect x="442" y="238" width="73.0" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="454" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">entry</text>
-<circle cx="503.0" cy="250" r="3.5" fill="#fb923c"/>
-<rect x="525.0" y="238" width="109.4" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="537.0" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">details</text>
-<circle cx="622.4" cy="250" r="3.5" fill="#fb923c"/>
-<circle cx="611.4" cy="250" r="3.5" fill="#fb923c"/>
-<circle cx="600.4" cy="250" r="3.5" fill="#fb923c"/>
-<rect x="644.4" y="238" width="91.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="656.4" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">verify</text>
-<circle cx="723.6" cy="250" r="3.5" fill="#fb923c"/>
-<circle cx="712.6" cy="250" r="3.5" fill="#fb923c"/>
+<rect x="442" y="238" width="80.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="454" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 1</text>
+<circle cx="510.20000000000005" cy="250" r="3.5" fill="#fb923c"/>
+<rect x="532.2" y="238" width="102.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="544.2" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 2</text>
+<circle cx="622.4000000000001" cy="250" r="3.5" fill="#fb923c"/>
+<circle cx="611.4000000000001" cy="250" r="3.5" fill="#fb923c"/>
+<circle cx="600.4000000000001" cy="250" r="3.5" fill="#fb923c"/>
+<rect x="644.4000000000001" y="238" width="91.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="656.4000000000001" y="250" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 3</text>
+<circle cx="723.6000000000001" cy="250" r="3.5" fill="#fb923c"/>
+<circle cx="712.6000000000001" cy="250" r="3.5" fill="#fb923c"/>
 <rect x="424" y="282" width="436" height="70" rx="10" fill="#1c1a4a" stroke="#818cf8" stroke-width="1.2"/>
-<text x="442" y="302" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/reset-password</text>
+<text x="442" y="302" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="start" dominant-baseline="central">/flow-c</text>
 <text x="842" y="302" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end" dominant-baseline="central">one route</text>
-<rect x="442" y="318" width="98.4" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="454" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">request</text>
-<circle cx="528.4" cy="330" r="3.5" fill="#fb923c"/>
-<circle cx="517.4" cy="330" r="3.5" fill="#fb923c"/>
-<rect x="550.4" y="318" width="145.4" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="562.4" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">new password</text>
-<circle cx="683.8" cy="330" r="3.5" fill="#fb923c"/>
-<circle cx="672.8" cy="330" r="3.5" fill="#fb923c"/>
-<circle cx="661.8" cy="330" r="3.5" fill="#fb923c"/>
-<rect x="705.8" y="318" width="65.8" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
-<text x="717.8" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">done</text>
-<circle cx="759.5999999999999" cy="330" r="3.5" fill="#fb923c"/>
+<rect x="442" y="318" width="91.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="454" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 1</text>
+<circle cx="521.2" cy="330" r="3.5" fill="#fb923c"/>
+<circle cx="510.20000000000005" cy="330" r="3.5" fill="#fb923c"/>
+<rect x="543.2" y="318" width="102.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="555.2" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 2</text>
+<circle cx="633.4000000000001" cy="330" r="3.5" fill="#fb923c"/>
+<circle cx="622.4000000000001" cy="330" r="3.5" fill="#fb923c"/>
+<circle cx="611.4000000000001" cy="330" r="3.5" fill="#fb923c"/>
+<rect x="655.4000000000001" y="318" width="80.2" height="24" rx="12" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
+<text x="667.4000000000001" y="330" font-size="12" font-weight="400" fill="#e6edf3" text-anchor="start" dominant-baseline="central">step 3</text>
+<circle cx="723.6000000000001" cy="330" r="3.5" fill="#fb923c"/>
 <rect x="424" y="377" width="44" height="18" rx="9" fill="#0d1117" stroke="#818cf8" stroke-width="1"/>
 <text x="476" y="386" font-size="12" font-weight="400" fill="#9198a1" text-anchor="start" dominant-baseline="central">step of a flow</text>
 <circle cx="584" cy="386" r="3.5" fill="#fb923c"/>
