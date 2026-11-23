@@ -213,8 +213,8 @@ The rules are written into the page spec and verified at several viewports:
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/flow-map-dark.svg">
-    <img src="docs/assets/flow-map-light.svg" alt="Twenty Figma frames mapped to one shared layout and three flows, each a route with steps and states" width="900">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/frames-to-flows-dark.svg">
+    <img src="docs/assets/frames-to-flows-light.svg" alt="Twenty Figma frames mapped to one shared layout and three flows, each a route with steps and states" width="900">
   </picture>
 </p>
 
