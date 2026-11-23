@@ -31,7 +31,8 @@ Only after the user approves the result.
 `specHash` comes from `scripts/spec-hash.mjs`: sha256 of the node's `spec.json` with sorted keys, motion included, `fixture` excluded. Never hash the raw Figma output: it changes even when the design does not.
 
 2. Show the user what will be deleted, then remove `.figma-work/<frame>/`. Do a full reset (including the distilled file) only if asked.
-3. Keep the preview route: updates need it, and it is excluded from production.
+3. Update `docs/figma/components.json` with the shared components built or extended in this run, and keep their specs in `docs/figma/specs/<component>/` (`component-reuse.md`). Only page and one-off section specs are deleted.
+4. Keep the preview route: updates need it, and it is excluded from production.
 
 ## Incremental update (the designer changed the frame)
 

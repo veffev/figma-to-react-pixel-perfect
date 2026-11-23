@@ -33,3 +33,5 @@ From `package.json`:
 ## Existing implementation
 
 If `docs/figma/<frame>.json` exists, switch to `incremental-update.md`.
+
+If `docs/figma/components.json` exists, read it: it lists the shared components earlier runs built from Figma, with their variants and props. They are reused or extended, not rebuilt (`component-reuse.md`).

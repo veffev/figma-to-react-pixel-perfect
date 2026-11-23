@@ -2,45 +2,194 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Component tree",
   "type": "object",
-  "required": ["frame", "components"],
+  "required": [
+    "frame",
+    "components"
+  ],
   "properties": {
     "frame": {
       "type": "object",
-      "required": ["fileKey", "nodeId"],
-      "properties": { "figmaUrl": { "type": "string" }, "fileKey": { "type": "string" }, "nodeId": { "type": "string" }, "name": { "type": "string" } }
+      "required": [
+        "fileKey",
+        "nodeId"
+      ],
+      "properties": {
+        "figmaUrl": {
+          "type": "string"
+        },
+        "fileKey": {
+          "type": "string"
+        },
+        "nodeId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
     },
-    "branch": { "enum": ["next-app-router", "react"] },
+    "branch": {
+      "enum": [
+        "next-app-router",
+        "react"
+      ]
+    },
     "components": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "scope", "figmaNodes", "dataContract"],
+        "required": [
+          "name",
+          "scope",
+          "figmaNodes",
+          "dataContract"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "scope": { "enum": ["shared", "section", "page"] },
-          "figmaNodes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-          "path": { "type": "string", "description": "target file, following the repo's conventions" },
-          "reuse": { "type": ["string", "null"], "description": "path of an existing equivalent component" },
-          "kind": { "enum": ["server", "client"], "description": "Next branch only; about interactivity, not data" },
-          "reason": { "type": "string" },
+          "name": {
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "shared",
+              "section",
+              "page"
+            ]
+          },
+          "figmaNodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "path": {
+            "type": "string",
+            "description": "target file, following the repo's conventions"
+          },
+          "reuse": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "path of an existing equivalent component"
+          },
+          "kind": {
+            "enum": [
+              "server",
+              "client"
+            ],
+            "description": "Next branch only; about interactivity, not data"
+          },
+          "reason": {
+            "type": "string"
+          },
           "dataContract": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["prop", "type", "required"],
-              "properties": { "prop": { "type": "string" }, "type": { "type": "string" }, "required": { "type": "boolean" }, "example": {} }
+              "required": [
+                "prop",
+                "type",
+                "required"
+              ],
+              "properties": {
+                "prop": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "example": {}
+              }
             }
           },
-          "static": { "type": "array", "items": { "type": "string" } },
-          "variants": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+          "static": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "variants": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
           "states": {
             "type": "object",
-            "properties": { "present": { "type": "array", "items": { "type": "string" } }, "missing": { "type": "array", "items": { "type": "string" } } }
+            "properties": {
+              "present": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missing": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "skeleton": { "type": "object", "properties": { "needed": { "type": "boolean" }, "derived": { "type": "boolean" } } },
-          "boundary": { "type": "boolean", "description": "an independent loading boundary makes sense here; annotation only" },
-          "motion": { "type": "boolean" },
-          "children": { "type": "array", "items": { "type": "string" } }
+          "skeleton": {
+            "type": "object",
+            "properties": {
+              "needed": {
+                "type": "boolean"
+              },
+              "derived": {
+                "type": "boolean"
+              }
+            }
+          },
+          "boundary": {
+            "type": "boolean",
+            "description": "an independent loading boundary makes sense here; annotation only"
+          },
+          "motion": {
+            "type": "boolean"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "usedIn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "screens or node ids where the component occurs"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "regions filled by the parent (children or named ReactNode props)"
+          },
+          "extends": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "path of an existing shared component this run extends; all its saved specs are re-verified"
+          },
+          "keptSeparateFrom": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "lookalike components deliberately not merged, with the reason in decisions/"
+          }
         }
       }
     }
