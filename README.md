@@ -48,6 +48,7 @@ Ask an agent to "implement this Figma link" and the result usually resembles the
 | Every frame becomes a page, even when frames are steps or states of one screen | Frames are mapped to routes, steps and states first, and you confirm the map |
 | Two agents rebuild the same button differently | A decomposer builds the component tree first; shared pieces are built once |
 | The same card or field is rebuilt for every screen and every new design | Pieces that repeat across screens and designs become one dynamic component, recorded in a registry that later runs reuse |
+| The designer changes the frame and everything is regenerated | Spec hashes show which components changed; only those are reworked and re-verified |
 
 ## What you get
 
@@ -56,7 +57,8 @@ Ask an agent to "implement this Figma link" and the result usually resembles the
 - **States and animations** present in the design, with exact durations, delays, easings and keyframes.
 - **A data-wiring map**: for each component its props contract, its skeleton, a suggested loading boundary, and whether it is a Server or Client Component.
 - **A development-only preview route** per node, fed with the exact content of the Figma frame.
-- **`docs/figma/<frame>.json`**, the record that makes later design updates incremental.
+- **`docs/figma/<frame>.json`**, the record that makes later design updates incremental: when the design changes, only the components that changed are reworked.
+- **`docs/figma/components.json`**, the registry of shared components that later designs reuse.
 
 What it never writes: `fetch`, SWR, TanStack Query, server actions, HTTP clients, data providers.
 
@@ -250,7 +252,33 @@ What gets built is recorded in `docs/figma/components.json`. The next design rea
 
 ### When the design changes
 
-On approval the skill saves, per component, the Figma node, the code file and a hash of its spec. Run it again after the designer edits the frame and it recomputes the hashes and reworks only the nodes that changed. A change in the props contract is flagged prominently, because it breaks the data wiring you wrote.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/design-update-dark.svg">
+    <img src="docs/assets/design-update-light.svg" alt="Saved spec hashes are compared with fresh specs from Figma: unchanged components are left alone, changed ones are reworked, structural changes are flagged" width="900">
+  </picture>
+</p>
+
+The designer edits the frame, you run the skill again on the same link, and it updates the UI without starting over.
+
+1. **It remembers what it built.** On approval, the skill saves `docs/figma/<frame>.json`: for each component, the Figma node, the code file, the props contract and a hash of its spec.
+2. **It reads the design as it is now.** The specs of the saved nodes are regenerated from the current frame, motion included, and hashed again.
+3. **It compares, node by node.**
+
+| Result | What happens |
+|---|---|
+| Same hash | The component is not touched |
+| Different hash | Only that node goes back to the decomposer and the implementer, with the diff between the old and the new spec (for example `padding-top: 24 → 32`) |
+| New node | Added to the component tree and reported to you |
+| Removed node | Reported to you; nothing is deleted without your confirmation |
+| Props contract changed (a prop added, removed or renamed) | Flagged prominently, because it breaks the data wiring you wrote |
+
+4. **It re-verifies what could be affected**: the changed nodes, every screen that uses them, and, for a shared component, every spec saved for it.
+5. **It tells you why.** Recent designer comments on the frame are included in the report; they usually explain the change.
+
+The hash covers the normalised spec (layout, styles, states, motion), not Figma's raw output, which changes even when the design does not. A padding change on one card therefore reworks one card, not the page.
+
+It is not automatic: the skill does not watch the Figma file. It compares when you run it.
 
 ## Install and requirements
 

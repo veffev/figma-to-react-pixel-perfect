@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>When the design changes</title><desc>Saved spec hashes are compared with fresh specs from Figma: unchanged nodes are left alone, changed nodes are reworked, structural changes are flagged.</desc>
+<defs><marker id="a-line" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#9ca3af"/></marker><marker id="a-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#f97316"/></marker><marker id="a-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#10b981"/></marker><marker id="a-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6366f1"/></marker></defs>
+<rect x="0.5" y="0.5" width="899" height="299" rx="14" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="40" y="36" font-size="18" font-weight="700" fill="#111827" text-anchor="start" dominant-baseline="central">When the design changes</text>
+<rect x="40" y="72" width="230" height="78" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.2"/>
+<text x="155" y="96" font-size="14.5" font-weight="600" fill="#111827" text-anchor="middle" dominant-baseline="central">Saved record</text>
+<text x="155" y="118" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">docs/figma/&lt;frame&gt;.json</text>
+<text x="155" y="134" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">one spec hash per component</text>
+<rect x="40" y="176" width="230" height="78" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="155" y="200" font-size="14.5" font-weight="600" fill="#111827" text-anchor="middle" dominant-baseline="central">Figma frame today</text>
+<text x="155" y="222" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">specs regenerated</text>
+<text x="155" y="238" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">from the current design</text>
+<rect x="330" y="100" width="170" height="126" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<text x="415" y="148" font-size="14.5" font-weight="600" fill="#111827" text-anchor="middle" dominant-baseline="central">Compare hashes</text>
+<text x="415" y="172" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">node by node</text>
+<path d="M270 111 L300 111 L300 140 L327 140" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<path d="M270 215 L300 215 L300 186 L327 186" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="560" y="66" width="300" height="56" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="578" y="86" font-size="14" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Same hash</text>
+<text x="578" y="106" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">the component is not touched</text>
+<path d="M500 163 L530 163 L530 94 L557 94" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="560" y="136" width="300" height="56" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<text x="578" y="156" font-size="14" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Different hash</text>
+<text x="578" y="176" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">only that node is reworked and re-verified</text>
+<path d="M500 163 L530 163 L530 164 L557 164" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="560" y="206" width="300" height="56" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.2"/>
+<text x="578" y="226" font-size="14" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">New, removed, or props changed</text>
+<text x="578" y="246" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">flagged to you before anything is written</text>
+<path d="M500 163 L530 163 L530 234 L557 234" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+</svg>
