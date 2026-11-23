@@ -44,6 +44,10 @@ Renders one node at the frame's width, passing the `fixture` as props. A page no
 
 Node ids contain `:`; use the `-` form in URLs (`45-120`).
 
+## Flow playground (development only)
+
+A flow with two or more steps also gets a playground page under the preview folder, where the real step components run on mock data and the user can walk through the flow: see `flow-playground.md`. Mock data and step-to-step wiring live there and nowhere else.
+
 ## Phase 6: integration
 
 1. Assemble the sections into the real page and rerun verification on the whole frame.

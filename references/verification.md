@@ -46,6 +46,18 @@ It writes `report.json`, `impl.png`, and `diff.png`, and exits 1 when there are 
 7. **Pixel diff (secondary).** Screenshot at `deviceScaleFactor = screenshotScale`, fonts ready, finite animations finished, infinite ones stopped. Compared with `figma.png`. Different dimensions are a failure. A high diff with a green numeric gate usually means font rendering or an element that is not in the spec: investigate, do not ignore.
 8. **Purity.** No `fetch(`, no data-library imports, no fixture values hardcoded in component files.
 
+## Flows
+
+After the per-node checks, walk each flow in its playground:
+
+```bash
+node <skill>/scripts/verify-flow.mjs \
+  --walk .figma-work/<flow>/flow-walk.json \
+  --url http://localhost:3000/figma-preview/flows/<flow>
+```
+
+It fails when a step is not reached, an action target is missing, an expected state or node does not appear, or the page logs a runtime error. It writes `flow-report.json` and one screenshot per step. See `flow-playground.md`.
+
 ## Report and fix loop
 
 `report.json` lists numeric deviations:

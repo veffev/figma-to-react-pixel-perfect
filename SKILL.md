@@ -9,6 +9,8 @@ description: Implements the UI layer of a Figma design in React or Next.js (App 
 
 This skill builds the **UI layer**: presentational components, skeletons, states, animations, tokens, and a **props contract** describing the data each component needs.
 
+A flow with several steps also ships with a development-only **playground**: the real components driven by mock data, so the user can click through the flow and its loading and error states (`references/flow-playground.md`). Mock data lives only there.
+
 It writes **no data logic**: no `fetch`, no SWR / TanStack Query / Apollo, no server actions, no HTTP clients, no data providers. Every project has its own server and client data libraries. The user wires data using the contract this skill produces. If the user explicitly asks to connect data, do it as separate work, following the repo's conventions, after the UI is verified.
 
 ## Principles
@@ -49,7 +51,7 @@ Read the reference file for a phase when you reach it, not before.
 | 2 | Decomposition: component tree, static vs dynamic, props contract, server/client | decomposer subagent | `references/decomposer.md`, `references/component-reuse.md`, `references/layout-intent.md` |
 | 3 | Deterministic spec per node (`spec.json`), tokens | orchestrator | `references/spec.md`, `references/figma-css-mapping.md` |
 | 4 | Implementation in two waves: shared components, then sections in parallel | implementer subagents | `references/implementation.md`, `references/motion.md` |
-| 5 | Verification with the bundled scripts, fix loop | verifier subagent | `references/verification.md` |
+| 5 | Verification with the bundled scripts, fix loop; flows are also walked in their playground | verifier subagent | `references/verification.md`, `references/flow-playground.md` |
 | 6 | Integration, repo checks, final report with the data-wiring map | orchestrator | `references/implementation.md` |
 | 7 | Distill to `docs/figma/<frame>.json`, clean up (after user approval) | orchestrator | `references/incremental-update.md` |
 
@@ -95,6 +97,10 @@ node <skill>/scripts/verify-node.mjs --spec .figma-work/<frame>/nodes/<id>/spec.
 # no data logic and no fixture values inside the produced components
 node <skill>/scripts/purity-check.mjs --spec .figma-work/<frame>/nodes/<id>/spec.json <files...>
 
+# walk a flow in its playground: every step reached, actions work, no runtime errors
+node <skill>/scripts/verify-flow.mjs --walk .figma-work/<flow>/flow-walk.json \
+  --url http://localhost:3000/figma-preview/flows/<flow>
+
 # stable hash of a spec, used for incremental updates
 node <skill>/scripts/spec-hash.mjs .figma-work/<frame>/nodes/<id>/spec.json
 ```
@@ -102,6 +108,7 @@ node <skill>/scripts/spec-hash.mjs .figma-work/<frame>/nodes/<id>/spec.json
 ## Always
 
 - No data logic, in any phase.
+- Every flow with two or more steps gets a playground with mock data and a passing walk (`references/flow-playground.md`). Mock data never enters components or production routes.
 - A frame is not a page. With several screens, never create one route per frame without the flow analysis and the user's confirmation.
 - The decomposer reads the project (routes, layouts, existing flows) before it decides structure; the project's existing pattern wins.
 - Pieces that repeat across screens or across designs become one dynamic component (props, variants, slots), found before any code is written and recorded in `docs/figma/components.json` so later designs reuse them (`references/component-reuse.md`). Never rebuild a component that already exists.
