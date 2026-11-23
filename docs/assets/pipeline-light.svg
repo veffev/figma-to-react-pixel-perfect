@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 864" width="900" height="864" role="img" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>How the skill works</title><desc>Pipeline from a Figma link to verified UI components, with shared memory on disk and an optional second model.</desc>
+<defs><marker id="a-line" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#9ca3af"/></marker><marker id="a-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#f97316"/></marker><marker id="a-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#10b981"/></marker><marker id="a-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#6366f1"/></marker></defs>
+<rect x="0.5" y="0.5" width="899" height="863" rx="14" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="40" y="36" font-size="18" font-weight="700" fill="#111827" text-anchor="start" dominant-baseline="central">How it works</text>
+<rect x="70" y="70" width="470" height="60" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="92" y="92" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Figma link</text>
+<text x="92" y="113" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">a component, a page, or a whole section</text>
+<path d="M305.0 130 L305.0 149" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="152" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="164" width="37" height="20" rx="10" fill="#6366f1"/>
+<text x="104.5" y="174" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">0-1</text>
+<text x="131" y="174" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Orchestrator: recon and extraction</text>
+<text x="92" y="195" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">repo conventions, fonts, Figma data, motion inventory</text>
+<path d="M305.0 212 L305.0 231" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="234" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="246" width="30" height="20" rx="10" fill="#6366f1"/>
+<text x="101.0" y="256" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">1b</text>
+<text x="124" y="256" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Decomposer: flow analysis</text>
+<text x="92" y="277" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">several screens only: routes, steps, states. You confirm.</text>
+<path d="M305.0 294 L305.0 313" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="316" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="328" width="23" height="20" rx="10" fill="#6366f1"/>
+<text x="97.5" y="338" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="117" y="338" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Decomposer: components and layout</text>
+<text x="92" y="359" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">component tree, props contract, layout intent</text>
+<path d="M305.0 376 L305.0 395" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="398" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="410" width="23" height="20" rx="10" fill="#6366f1"/>
+<text x="97.5" y="420" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="117" y="420" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Spec per node</text>
+<text x="92" y="441" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">spec.json: boxes, styles, states, motion, responsive</text>
+<path d="M305.0 458 L305.0 477" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="480" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="492" width="23" height="20" rx="10" fill="#6366f1"/>
+<text x="97.5" y="502" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">4</text>
+<text x="117" y="502" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Wave 1: shared components</text>
+<text x="92" y="523" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">built once, verified one by one</text>
+<path d="M305.0 540 L305.0 559" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="562" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="574" width="23" height="20" rx="10" fill="#6366f1"/>
+<text x="97.5" y="584" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">4</text>
+<text x="117" y="584" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Wave 2: sections in parallel</text>
+<text x="92" y="605" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">one agent per section, layout and animations</text>
+<path d="M305.0 622 L305.0 641" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="644" width="470" height="60" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<rect x="86" y="656" width="23" height="20" rx="10" fill="#6366f1"/>
+<text x="97.5" y="666" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">5</text>
+<text x="117" y="666" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Verifier: Playwright script</text>
+<text x="92" y="687" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">numbers, states, motion, window sizes, pixels</text>
+<path d="M305.0 704 L305.0 723" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#a-line)"/>
+<rect x="70" y="726" width="470" height="60" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2"/>
+<rect x="86" y="738" width="37" height="20" rx="10" fill="#6366f1"/>
+<text x="104.5" y="748" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="central">6-7</text>
+<text x="131" y="748" font-size="14.5" font-weight="600" fill="#111827" text-anchor="start" dominant-baseline="central">Integration and report</text>
+<text x="92" y="769" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">data-wiring map, repo checks, cleanup</text>
+<rect x="600" y="152" width="260" height="470" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="1.2"/>
+<text x="730.0" y="325.0" font-size="15" font-weight="700" fill="#111827" text-anchor="middle" dominant-baseline="central">Shared memory</text>
+<text x="730.0" y="347.0" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">.figma-work/ on disk</text>
+<text x="626" y="379.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">context.md</text>
+<text x="626" y="400.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">flow-map.json</text>
+<text x="626" y="421.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">component-tree.json</text>
+<text x="626" y="442.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">spec.json per node</text>
+<text x="626" y="463.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">decisions/ and issues/</text>
+<text x="626" y="484.0" font-size="12.5" font-weight="400" fill="#111827" text-anchor="start" dominant-baseline="central">report.json per node</text>
+<path d="M540 182.0 L600 182.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<path d="M540 264.0 L600 264.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<path d="M540 346.0 L600 346.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<path d="M540 428.0 L600 428.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<path d="M540 510.0 L600 510.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<path d="M540 592.0 L600 592.0" fill="none" stroke="#10b981" stroke-width="1.1" stroke-dasharray="3 3"/>
+<rect x="600" y="644" width="260" height="60" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.2"/>
+<text x="730.0" y="666" font-size="14.5" font-weight="600" fill="#111827" text-anchor="middle" dominant-baseline="central">Codex (optional)</text>
+<text x="730.0" y="687" font-size="12" font-weight="400" fill="#6b7280" text-anchor="middle" dominant-baseline="central">review, then escalation</text>
+<path d="M540 674.0 L597 674.0" fill="none" stroke="#f97316" stroke-width="1.4" marker-end="url(#a-coral)"/>
+<path d="M70 674.0 L42 674.0 L42 592.0 L67 592.0" fill="none" stroke="#f97316" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#a-coral)"/>
+<rect x="70" y="822" width="16" height="16" rx="4" fill="#eef2ff" stroke="#6366f1" stroke-width="1.2"/>
+<text x="94" y="830" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">Claude agents</text>
+<rect x="220" y="822" width="16" height="16" rx="4" fill="#fff7ed" stroke="#f97316" stroke-width="1.2"/>
+<text x="244" y="830" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">Second model</text>
+<rect x="370" y="822" width="16" height="16" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1.2"/>
+<text x="394" y="830" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">Files on disk</text>
+<path d="M520 830 L554 830" fill="none" stroke="#f97316" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="564" y="830" font-size="12" font-weight="400" fill="#6b7280" text-anchor="start" dominant-baseline="central">Fix loop from measured deviations, max 3 rounds</text>
+</svg>

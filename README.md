@@ -1,12 +1,30 @@
-# figma-to-react-pixel-perfect
+<h1 align="center">figma-to-react-pixel-perfect</h1>
 
-An agent skill that implements the **UI layer** of a Figma design in React or Next.js (App Router) with Tailwind v4: pixel-perfect, animations included, and **measured** against the design instead of eyeballed.
+<p align="center">
+  An agent skill that implements the <b>UI layer</b> of a Figma design in React or Next.js with Tailwind v4:<br>
+  pixel-perfect, animations included, and <b>measured</b> against the design instead of eyeballed.
+</p>
 
-It produces presentational components, skeletons and a props contract. It writes no data-fetching code: you wire your own server and client data libraries using the contract.
+<p align="center">
+  <img alt="Agent skill" src="https://img.shields.io/badge/agent-skill-6366f1">
+  <img alt="React and Next.js App Router" src="https://img.shields.io/badge/React%20%7C%20Next.js-App%20Router-111827">
+  <img alt="Tailwind CSS v4" src="https://img.shields.io/badge/Tailwind%20CSS-v4-06b6d4">
+  <img alt="Verified with Playwright" src="https://img.shields.io/badge/verified%20with-Playwright-2ead33">
+  <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue">
+</p>
 
 ```bash
 npx skills add veffev/figma-to-react-pixel-perfect
 ```
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/pipeline-dark.svg">
+    <img src="docs/assets/pipeline-light.svg" alt="How the skill works: orchestrator, decomposer, spec per node, two implementation waves, Playwright verification, shared memory on disk and an optional second model" width="900">
+  </picture>
+</p>
+
+It produces presentational components, skeletons and a props contract. It writes **no data-fetching code**: you wire your own server and client data libraries using the contract.
 
 - [Why](#why)
 - [What you get](#what-you-get)
@@ -45,28 +63,7 @@ What it never writes: `fetch`, SWR, TanStack Query, server actions, HTTP clients
 
 ### The pipeline
 
-```mermaid
-flowchart TD
-  IN([Figma link]) --> O[Orchestrator<br/>repo recon, Figma extraction, motion inventory]
-  O --> FA{Several screens?}
-  FA -- yes --> FM[Decomposer: flow analysis<br/>routes, steps, states, shared shell]
-  FM --> ASK([You confirm the flow map])
-  ASK --> D
-  FA -- no --> D[Decomposer<br/>component tree, props contract, layout intent]
-  D --> S[Spec per node<br/>spec.json]
-  S --> W1[Wave 1: shared components]
-  W1 --> W2[Wave 2: sections in parallel<br/>one agent per section]
-  W2 --> V[Verifier: Playwright script]
-  V -- deviations, max 3 rounds --> W2
-  V -. review and escalation .-> CX[Codex<br/>second model]
-  V --> R([Integration, report, data-wiring map])
-
-  MEM[(Shared memory<br/>.figma-work/)]
-  O -.- MEM
-  D -.- MEM
-  S -.- MEM
-  W2 -.- MEM
-```
+The diagram at the top of this page shows the full path for a page or a flow.
 
 A single component runs through one agent (extract, spec, implement, verify). The full pipeline is for pages and flows.
 
@@ -113,6 +110,13 @@ nodes/<nodeId>/report.json   the verification result
 One writer per file. Each agent reads the context, its own node of the tree and its own spec, not everything: too much context lowers precision.
 
 ### The spec is the test
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/spec-loop-dark.svg">
+    <img src="docs/assets/spec-loop-light.svg" alt="Figma data becomes spec.json, components are built only from spec values, a script measures the result in a real browser and reports numeric deviations" width="900">
+  </picture>
+</p>
 
 For each node the skill writes the exact values from Figma. Implementers use only those; the script checks only those.
 
@@ -207,6 +211,13 @@ The rules are written into the page spec and verified at several viewports:
 
 ### Several screens: flow analysis
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/flow-map-dark.svg">
+    <img src="docs/assets/flow-map-light.svg" alt="Twenty Figma frames mapped to one shared layout and three routes, each with steps and states" width="900">
+  </picture>
+</p>
+
 A frame is not a page. Given a section with many screens, the decomposer reads the project first (routes, layouts, how existing multi-step flows are built) and classifies each frame:
 
 | Relation between frames | Becomes |
@@ -295,6 +306,7 @@ references/              one guide per phase, read only when that phase starts
   verification.md  codex.md  incremental-update.md
 scripts/                 verify-node.mjs  purity-check.mjs  spec-hash.mjs
 assets/                  JSON schemas and preview route templates
+docs/assets/             diagrams used in this README
 ```
 
 ## What has been tested
