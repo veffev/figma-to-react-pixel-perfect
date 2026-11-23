@@ -46,6 +46,7 @@ Ask an agent to "implement this Figma link" and the result usually resembles the
 | "Verification" is a glance at a screenshot | A script compares the rendered page to the spec, element by element |
 | The frame is copied as a fixed canvas, so the page only works at that size | The layout intent behind the frame is inferred and checked at several window sizes |
 | Every frame becomes a page, even when frames are steps or states of one screen | Frames are mapped to routes, steps and states first, and you confirm the map |
+| You get screens, but cannot try the flow | Every multi-step flow ships with a playground on mock data and a scripted walk through it |
 | Two agents rebuild the same button differently | A decomposer builds the component tree first; shared pieces are built once |
 | The same card or field is rebuilt for every screen and every new design | Pieces that repeat across screens and designs become one dynamic component, recorded in a registry that later runs reuse |
 | The designer changes the frame and everything is regenerated | Spec hashes show which components changed; only those are reworked and re-verified |
@@ -57,6 +58,7 @@ Ask an agent to "implement this Figma link" and the result usually resembles the
 - **States and animations** present in the design, with exact durations, delays, easings and keyframes.
 - **A data-wiring map**: for each component its props contract, its skeleton, a suggested loading boundary, and whether it is a Server or Client Component.
 - **A development-only preview route** per node, fed with the exact content of the Figma frame.
+- **A flow playground with mock data** for every multi-step flow: click through the real components, switch states, add latency, force an error.
 - **`docs/figma/<frame>.json`**, the record that makes later design updates incremental: when the design changes, only the components that changed are reworked.
 - **`docs/figma/components.json`**, the registry of shared components that later designs reuse.
 
@@ -234,6 +236,26 @@ A frame is not a page. Given a section with many screens, the decomposer reads t
 
 It writes a flow map, shows it to you and **stops**. Whether a step is a route or a state is an architecture decision, and it is yours. Work then proceeds one group at a time and scales with the number of distinct changing regions, not with the number of frames.
 
+### Test the flow with mock data
+
+Pixel-perfect steps are not a working flow. For every flow with two or more steps the skill builds a development-only **playground**: the real step components, driven by mock data, wired so that actions move to the next step.
+
+- **Mock data** in `figma-preview/mocks/<flow>.ts`, typed against the props contract, in several sets: `default` (the content of the Figma frames), `empty`, `long`, and `many` for lists.
+- **A control bar** on the page: jump to any step, switch the state of the current step, choose a latency to see loading states, and toggle "fail next" to send the next simulated request to the error state.
+- **A scripted walk.** `scripts/verify-flow.mjs` clicks through the flow from a `flow-walk.json` and fails if a step is not reached, an action target is missing, an expected state does not show up, or the page logs a runtime error.
+
+```json
+{ "flow": "flow-a", "steps": [
+  { "id": "step-1", "root": "1:10", "actions": [{ "click": "1:12" }] },
+  { "id": "step-2", "root": "1:20", "actions": [
+    { "fill": "1:21", "value": "ada@example.com" },
+    { "click": "1:22", "expectState": "loading" } ] },
+  { "id": "step-3", "root": "1:30" }
+] }
+```
+
+The scope does not change: components stay presentational. Mock data and the step-to-step wiring live only in the development preview folder, and the purity check still fails if sample content appears inside a component. The report lists, for each step, the handlers the component expects, so you know what to connect to your real logic.
+
 ### Reusable components across designs
 
 With several screens in view, or a second design in a project that already has one, the decomposer looks for pieces that are really one component used with small differences, including detached copies the designer never turned into a Figma component. It lines up the occurrences and sorts each difference:
@@ -331,6 +353,7 @@ Run from the target project root. The only runtime dependency is Playwright, res
 | Script | Purpose |
 |---|---|
 | `scripts/verify-node.mjs` | numeric gate, states, motion, reduced motion, skeleton size, other window sizes, optional pixel diff; writes `report.json` |
+| `scripts/verify-flow.mjs` | walks a flow in its playground: steps reached, actions work, expected states, no runtime errors; writes `flow-report.json` |
 | `scripts/purity-check.mjs` | fails if component files contain data logic or hardcoded fixture values |
 | `scripts/spec-hash.mjs` | stable hash of a spec, for incremental updates |
 
@@ -346,10 +369,10 @@ node <skill>/scripts/verify-node.mjs \
 ```
 SKILL.md                 scope, principles, phases, fixed rules
 references/              one guide per phase, read only when that phase starts
-  recon.md  flow-analysis.md  decomposer.md  component-reuse.md  layout-intent.md
+  recon.md  flow-analysis.md  flow-playground.md  decomposer.md  component-reuse.md  layout-intent.md
   spec.md  figma-css-mapping.md  motion.md  implementation.md
   verification.md  codex.md  incremental-update.md
-scripts/                 verify-node.mjs  purity-check.mjs  spec-hash.mjs
+scripts/                 verify-node.mjs  verify-flow.mjs  purity-check.mjs  spec-hash.mjs
 assets/                  JSON schemas and preview route templates
 docs/assets/             diagrams used in this README
 ```
@@ -360,6 +383,7 @@ docs/assets/             diagrams used in this README
 |---|---|
 | The scripts, on test pages that are correct and on pages with deliberate errors, and on a Next.js 16 project | Flow analysis on a real section with many screens |
 | A real login page implemented from a Figma frame, with four looping animations extracted and verified | The React (non-Next) branch end to end |
+| The flow playground template and the flow walk, on a three-step demo flow in Next.js 16 (passes, and fails when an action does not advance) | The playground generated by the skill from a real multi-screen design |
 | The multi-viewport check, on a fixed-layout page (fails) and a fluid one (passes) | The incremental update after a design change |
 
 ## Limits

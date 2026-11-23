@@ -87,7 +87,9 @@ Then **show the map to the user and wait**: routes, shells, steps, states, the m
 4. Step specs cover the **changing region only**; the shell is not re-specified or re-verified per step.
 5. States of a step are separate spec files only for what differs from the default state.
 
-## Step 7: preview and verification
+## Step 7: preview, playground and verification
+
+- Build the flow playground with mock data as soon as two steps of a flow exist, so the user can click through it: `flow-playground.md`. Write the flow's `flow-walk.json` and run `verify-flow.mjs`.
 
 - One preview entry per step, with `?state=` for its states. Entries render the step inside its shell when the box coordinates depend on it.
 - Verify each step and state against its own frame. Verify the shell once, at all viewports.

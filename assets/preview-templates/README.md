@@ -6,6 +6,7 @@ Development-only pages that render one Figma node at its frame width, with the s
 |---|---|
 | `next-page.tsx` | `app/(dev)/figma-preview/[node]/page.tsx` (Next App Router) |
 | `react-preview.tsx` | a route such as `/figma-preview/:node`, registered only in development (React) |
+| `flow-playground.tsx` | next to the preview (`app/(dev)/figma-preview/flow-playground.tsx`); used by one page per flow under `flows/<flow>/` with mock data from `mocks/<flow>.ts` |
 | `registry.tsx` | next to the preview: `app/(dev)/figma-preview/registry.tsx`, or beside `react-preview.tsx` |
 
 Each implementer adds one entry to the registry, keyed by the node id in its URL form (`45-120`):
