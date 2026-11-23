@@ -47,6 +47,7 @@ Ask an agent to "implement this Figma link" and the result usually resembles the
 | The frame is copied as a fixed canvas, so the page only works at that size | The layout intent behind the frame is inferred and checked at several window sizes |
 | Every frame becomes a page, even when frames are steps or states of one screen | Frames are mapped to routes, steps and states first, and you confirm the map |
 | Two agents rebuild the same button differently | A decomposer builds the component tree first; shared pieces are built once |
+| The same card or field is rebuilt for every screen and every new design | Pieces that repeat across screens and designs become one dynamic component, recorded in a registry that later runs reuse |
 
 ## What you get
 
@@ -231,6 +232,22 @@ A frame is not a page. Given a section with many screens, the decomposer reads t
 
 It writes a flow map, shows it to you and **stops**. Whether a step is a route or a state is an architecture decision, and it is yours. Work then proceeds one group at a time and scales with the number of distinct changing regions, not with the number of frames.
 
+### Reusable components across designs
+
+With several screens in view, or a second design in a project that already has one, the decomposer looks for pieces that are really one component used with small differences, including detached copies the designer never turned into a Figma component. It lines up the occurrences and sorts each difference:
+
+| What differs between occurrences | Becomes |
+|---|---|
+| Text, image, number | a prop |
+| A discrete visual or size change | a variant |
+| A part present only sometimes | an optional prop or a slot |
+| Hover, error, loading, disabled | a state |
+| A different inner region | a slot filled by the parent |
+
+It merges only when role and structure match and a handful of props covers every case; lookalikes with different meaning stay separate, and nothing is generalised for a case no frame shows. You see the inventory and confirm it before code is written.
+
+What gets built is recorded in `docs/figma/components.json`. The next design reads that registry first and reuses or extends those components. An extended component is re-verified against every spec saved for it, so older screens do not regress.
+
 ### When the design changes
 
 On approval the skill saves, per component, the Figma node, the code file and a hash of its spec. Run it again after the designer edits the frame and it recomputes the hashes and reworks only the nodes that changed. A change in the props contract is flagged prominently, because it breaks the data wiring you wrote.
@@ -301,7 +318,7 @@ node <skill>/scripts/verify-node.mjs \
 ```
 SKILL.md                 scope, principles, phases, fixed rules
 references/              one guide per phase, read only when that phase starts
-  recon.md  flow-analysis.md  decomposer.md  layout-intent.md
+  recon.md  flow-analysis.md  decomposer.md  component-reuse.md  layout-intent.md
   spec.md  figma-css-mapping.md  motion.md  implementation.md
   verification.md  codex.md  incremental-update.md
 scripts/                 verify-node.mjs  purity-check.mjs  spec-hash.mjs

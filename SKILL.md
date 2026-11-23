@@ -46,7 +46,7 @@ Read the reference file for a phase when you reach it, not before.
 | 0 | Repo recon: branch (Next / React), conventions, gates | orchestrator | `references/recon.md` |
 | 1 | Figma extraction: metadata, variables, comments, motion inventory | orchestrator | Figma's `figma-design-to-code` |
 | 1b | Flow analysis, only with several screens: project routing and flow patterns, shared shells, routes vs steps vs states; **stop for user confirmation** | decomposer subagent | `references/flow-analysis.md` |
-| 2 | Decomposition: component tree, static vs dynamic, props contract, server/client | decomposer subagent | `references/decomposer.md`, `references/layout-intent.md` |
+| 2 | Decomposition: component tree, static vs dynamic, props contract, server/client | decomposer subagent | `references/decomposer.md`, `references/component-reuse.md`, `references/layout-intent.md` |
 | 3 | Deterministic spec per node (`spec.json`), tokens | orchestrator | `references/spec.md`, `references/figma-css-mapping.md` |
 | 4 | Implementation in two waves: shared components, then sections in parallel | implementer subagents | `references/implementation.md`, `references/motion.md` |
 | 5 | Verification with the bundled scripts, fix loop | verifier subagent | `references/verification.md` |
@@ -104,6 +104,7 @@ node <skill>/scripts/spec-hash.mjs .figma-work/<frame>/nodes/<id>/spec.json
 - No data logic, in any phase.
 - A frame is not a page. With several screens, never create one route per frame without the flow analysis and the user's confirmation.
 - The decomposer reads the project (routes, layouts, existing flows) before it decides structure; the project's existing pattern wins.
+- Pieces that repeat across screens or across designs become one dynamic component (props, variants, slots), found before any code is written and recorded in `docs/figma/components.json` so later designs reuse them (`references/component-reuse.md`). Never rebuild a component that already exists.
 - Never use the frame's height or width as a fixed or minimum size of a page, and never build page structure with absolute frame coordinates (`references/layout-intent.md`).
 - A page is verified at several window sizes, not only at the frame size.
 - The screenshot is for comparison only, never for estimating values.

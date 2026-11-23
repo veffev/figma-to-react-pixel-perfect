@@ -17,6 +17,10 @@ Read the project before the frames: `shared/context.md` plus the code itself. Ex
 
 If the input holds more than one screen, do the flow analysis first (`flow-analysis.md`) and wait for the user to confirm the flow map. The component tree is then built per group (shell, shared components, one route at a time).
 
+## Reusable components
+
+Look across all screens of the input, and at what earlier runs built (`docs/figma/components.json`), for pieces that are really one component used with small differences. Decide what becomes a prop, a variant, a slot or a state, and what stays separate: follow `component-reuse.md`. The splitting rules below are the baseline for a single screen.
+
 ## Layout intent
 
 For the page frame and every full-width or full-height section, read the layout intent before anything else and record it: follow `layout-intent.md`. Set `scope: "page"` on the page node. This decides whether the result works outside the frame's exact size.

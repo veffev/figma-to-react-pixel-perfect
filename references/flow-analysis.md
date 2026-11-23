@@ -45,6 +45,10 @@ Compare the screens' trees (names, types, positions, sizes of the first two leve
 
 Use prototype connections when Figma has them. Otherwise use names, order on the canvas, and content. When a screen fits two rows, do not guess: list it as a question.
 
+## Step 4b: component inventory
+
+With all screens in view, build the inventory of reusable components (`component-reuse.md`): what repeats across screens, what varies between occurrences, what becomes one dynamic component. Show it to the user together with the flow map.
+
 ## Step 5: write the flow map and stop
 
 `shared/flow-map.json` (schema: `assets/flow-map.schema.json`):
