@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Flow map",
+  "type": "object",
+  "required": ["input", "routes"],
+  "properties": {
+    "input": {
+      "type": "object",
+      "required": ["fileKey", "nodeId"],
+      "properties": { "fileKey": { "type": "string" }, "nodeId": { "type": "string" }, "name": { "type": "string" } }
+    },
+    "projectPattern": {
+      "type": "object",
+      "description": "what the project already does, with the files it was read from",
+      "properties": { "steps": { "type": "string" }, "shell": { "type": "string" }, "states": { "type": "string" } }
+    },
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["figmaNode"],
+        "properties": { "figmaNode": { "type": "string" }, "name": { "type": "string" }, "width": { "type": "number" }, "height": { "type": "number" } }
+      }
+    },
+    "shells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "figmaNodes"],
+        "properties": {
+          "id": { "type": "string" },
+          "figmaNodes": { "type": "array", "items": { "type": "string" } },
+          "target": { "type": "string" },
+          "reuse": { "type": ["string", "null"], "description": "path of an existing layout to reuse" }
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "steps"],
+        "properties": {
+          "path": { "type": "string" },
+          "shell": { "type": "string" },
+          "stepMechanism": { "enum": ["state", "search-param", "nested-routes", "repo-pattern"], "description": "confirmed by the user" },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "figmaNode"],
+              "properties": {
+                "id": { "type": "string" },
+                "figmaNode": { "type": "string" },
+                "states": { "type": "object", "description": "state name -> figma node id", "additionalProperties": { "type": "string" } },
+                "next": { "type": "string", "description": "the user action expected to lead to the next step" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "componentSheets": { "type": "array", "items": { "type": "string" } },
+    "questions": { "type": "array", "items": { "type": "string" } },
+    "confirmedByUser": { "type": "boolean" }
+  }
+}

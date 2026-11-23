@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Figma node spec",
+  "type": "object",
+  "required": [
+    "nodeId",
+    "frame",
+    "elements"
+  ],
+  "properties": {
+    "nodeId": {
+      "type": "string",
+      "description": "Figma node id, for example 45:120"
+    },
+    "component": {
+      "type": "string"
+    },
+    "frame": {
+      "type": "object",
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "screenshotScale": {
+          "type": "number",
+          "default": 1
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "display": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "row",
+            "column",
+            "row-reverse",
+            "column-reverse"
+          ]
+        },
+        "gap": {
+          "type": "number"
+        },
+        "padding": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "top, right, bottom, left"
+        },
+        "alignItems": {
+          "type": "string"
+        },
+        "justifyContent": {
+          "type": "string"
+        },
+        "flexWrap": {
+          "type": "string"
+        }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "figmaNode"
+        ],
+        "properties": {
+          "figmaNode": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "bind": {
+            "type": "string",
+            "description": "prop of the dataContract this element renders"
+          },
+          "box": {
+            "type": "object",
+            "description": "relative to the node's top-left corner, CSS px",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "w": {
+                "type": "number"
+              },
+              "h": {
+                "type": "number"
+              }
+            }
+          },
+          "style": {
+            "type": "object",
+            "description": "camelCase CSS properties; numbers are px except fontWeight and opacity",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "description": "state name -> figma node id -> expected styles",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number"
+            ]
+          }
+        }
+      }
+    },
+    "motion": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "figmaNode",
+          "kind"
+        ],
+        "properties": {
+          "figmaNode": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string",
+            "description": "mount, hover, focus, click, scroll, ..."
+          },
+          "kind": {
+            "enum": [
+              "transition",
+              "keyframes",
+              "js"
+            ]
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "kebab-case CSS properties, for transitions"
+          },
+          "duration": {
+            "type": "number",
+            "description": "ms"
+          },
+          "delay": {
+            "type": "number",
+            "description": "ms"
+          },
+          "easing": {
+            "type": "string"
+          },
+          "iterations": {
+            "type": [
+              "number",
+              "string"
+            ],
+            "description": "a number or \"infinite\""
+          },
+          "keyframes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "offset"
+              ],
+              "properties": {
+                "offset": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "opacity": {
+                  "type": "number"
+                },
+                "transform": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "spring": {
+            "type": "object",
+            "properties": {
+              "stiffness": {
+                "type": "number"
+              },
+              "damping": {
+                "type": "number"
+              },
+              "mass": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "description": "exact values shown in the frame, used as preview props; never copied into components"
+    },
+    "scope": {
+      "enum": [
+        "component",
+        "section",
+        "page"
+      ],
+      "description": "page specs must carry a responsive block"
+    },
+    "responsive": {
+      "type": "object",
+      "description": "layout intent, verified at every viewport; see references/layout-intent.md",
+      "properties": {
+        "singleScreen": {
+          "type": "boolean",
+          "description": "no vertical scroll intended"
+        },
+        "minHeight": {
+          "type": "number",
+          "description": "below this window height scrolling is acceptable"
+        },
+        "stackBelow": {
+          "type": "number",
+          "description": "below this width the layout stacks; only overflow and mustRemain are checked"
+        },
+        "tolerance": {
+          "type": "number",
+          "description": "px, defaults to the box tolerance"
+        },
+        "derived": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "keys inferred rather than read from Figma"
+        },
+        "viewports": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "mustRemain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "figmaNode",
+              "edges"
+            ],
+            "properties": {
+              "figmaNode": {
+                "type": "string"
+              },
+              "within": {
+                "type": "string",
+                "description": "a Figma node id, or \"viewport\""
+              },
+              "edges": {
+                "type": "object",
+                "description": "left/top/right/bottom: px number, or a string like \"50%+10\"",
+                "additionalProperties": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "centered": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "figmaNode"
+            ],
+            "properties": {
+              "figmaNode": {
+                "type": "string"
+              },
+              "axis": {
+                "enum": [
+                  "x",
+                  "y"
+                ]
+              },
+              "within": {
+                "type": "string",
+                "description": "a Figma node id, or \"viewport\""
+              },
+              "offset": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "fractions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "figmaNode",
+              "value"
+            ],
+            "properties": {
+              "figmaNode": {
+                "type": "string"
+              },
+              "axis": {
+                "enum": [
+                  "width",
+                  "height"
+                ]
+              },
+              "of": {
+                "type": "string",
+                "description": "a Figma node id, or \"viewport\""
+              },
+              "value": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "noOverlap": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    }
+  }
+}
